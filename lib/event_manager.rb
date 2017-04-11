@@ -2,7 +2,13 @@
 # Author: Luján Fernaud
 # URL: http://tutorials.jumpstartlab.com/projects/eventmanager.html
 
-puts "Event Manager initialized."
+system "clear" or "cls"
+puts "Event Manager initialized.\n\n"
 
-contents = File.read("event_attendees.csv")
-puts contents
+lines = File.readlines("event_attendees.csv")
+lines.each.with_index do |line, index|
+  next if index.zero?
+  columns = line.split(",")
+  name = columns[2]
+  puts name
+end
