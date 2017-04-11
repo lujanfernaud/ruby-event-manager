@@ -2,13 +2,15 @@
 # Author: Luján Fernaud
 # URL: http://tutorials.jumpstartlab.com/projects/eventmanager.html
 
+require "csv"
+
 system "clear" or "cls"
 puts "Event Manager initialized.\n\n"
 
-lines = File.readlines("event_attendees.csv")
-lines.each.with_index do |line, index|
-  next if index.zero?
-  columns = line.split(",")
-  name = columns[2]
-  puts name
+contents = CSV.open("event_attendees.csv", headers: true,
+                                           header_converters: :symbol)
+contents.each do |row|
+  name    = row[:first_name]
+  zipcode = row[:zipcode]
+  puts "#{name} #{zipcode}"
 end
