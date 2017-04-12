@@ -16,11 +16,15 @@
     <tr>
       <th>Name</th>
       <th>Website</th>
+      <th>Phone Number</th>
     </tr>
     <% legislators.each do |legislator| %>
       <tr>
         <td><%= "#{legislator.first_name} #{legislator.last_name}" %></td>
         <td><%= "#{legislator.website}" %></td>
+        <% if phone_number %>
+          <td><%= "#{phone_number}" %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
